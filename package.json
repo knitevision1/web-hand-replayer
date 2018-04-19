@@ -1,0 +1,25 @@
+{
+  "name": "web-poker-hand-replayer",
+  "version": "1.0.0",
+  "description": "Feed the exported hand and get a sharable replay link",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/knitevision1/web-hand-replayer.git"
+  },
+  "author": "knitevision1",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/knitevision1/web-hand-replayer/issues"
+  },
+  "homepage": "https://github.com/knitevision1/web-hand-replayer#readme",
+  "devDependencies": {
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.0.14"
+  }
+}
