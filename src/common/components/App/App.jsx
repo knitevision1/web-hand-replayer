@@ -1,8 +1,15 @@
 import React from 'react'
-import style from './App.scss'
+import { Header, Main, Foo, Bar } from 'src/common'
 
 const App = () => (
-  <h2 className={style.h2}>???</h2>
+  <div>
+    <Header></Header>
+    <Main>
+      <Foo>
+        <Bar />
+      </Foo>
+    </Main>
+  </div>
 )
 
 export default App

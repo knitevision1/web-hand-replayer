@@ -1,5 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { App } from './common'
+import { Provider, App } from './common'
 
-ReactDOM.render(<App />, document.getElementById('app'))
+ReactDOM.render(<Provider><App /></Provider>, document.getElementById('app'))

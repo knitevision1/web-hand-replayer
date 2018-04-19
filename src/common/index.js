@@ -1,1 +1,6 @@
 export { default as App } from './components/App/App'
+export { default as Main } from './components/Main/Main'
+export { default as Header } from './components/Header/Header'
+export { default as Foo } from './components/Foo/Foo'
+export { default as Bar } from './components/Bar/Bar'
+export { default as Provider } from './components/Provider/Provider'
