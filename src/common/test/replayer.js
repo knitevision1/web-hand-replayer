@@ -1,13 +1,9 @@
-import { hand } from './hand'
-
-export function replay () {
+export function replay (hand) {
   const store = {}
   const playerAction = /^[\S]*:.*/mg
-  const playerStack = /[\S]*\s\(\$\d.*(?=\sin)/mg
+  const playerStack = /[\S]*\s\(\d.*(?=\sin)/mg
   const playerActionArr = hand.match(playerAction)
   const playerStackArr = hand.match(playerStack)
-  console.log(playerStackArr)
-  console.log('asd')
 
   for (const i of playerActionArr) {
     const player = i.split(':')[0]
@@ -24,6 +20,15 @@ export function replay () {
         ...store[player].actions,
         action
       ]
+    }
+  }
+
+  for (const i of playerStackArr) {
+    const player = i.split('(')[0].replace(' ', '')
+    const stack = i.split('(')[1]
+    store[player] = {
+      ...store[player],
+      stack
     }
   }
 
