@@ -1,5 +1,6 @@
 import React from 'react'
 import { replay } from 'src/common/test/replayer'
+import { hand } from 'src/common/test/hand'
 
 class Foo extends React.Component {
   constructor () {
@@ -16,8 +17,7 @@ class Foo extends React.Component {
   }
 
   handleReplay () {
-    console.log(this.state.hand)
-    replay(this.state.hand)
+    replay(hand)
   }
 
   render () {

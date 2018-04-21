@@ -1,7 +1,7 @@
 export function replay (hand) {
   const store = {}
   const playerAction = /^[\S]*:.*/mg
-  const playerStack = /[\S]*\s\(\d.*(?=\sin)/mg
+  const playerStack = /[\S]*\s\(\$\d.*(?=\sin)/mg
   const playerActionArr = hand.match(playerAction)
   const playerStackArr = hand.match(playerStack)
 
@@ -23,14 +23,14 @@ export function replay (hand) {
     }
   }
 
-  for (const i of playerStackArr) {
-    const player = i.split('(')[0].replace(' ', '')
-    const stack = i.split('(')[1]
-    store[player] = {
-      ...store[player],
-      stack
-    }
-  }
-
+  // for (const i of playerStackArr) {
+  //   const player = i.split('(')[0].replace(' ', '')
+  //   const stack = i.split('(')[1]
+  //   store[player] = {
+  //     ...store[player],
+  //     stack
+  //   }
+  // }
+  console.log(playerStackArr)
   console.log(store)
 }
