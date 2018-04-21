@@ -7,6 +7,7 @@ export function replay () {
   const playerActionArr = hand.match(playerAction)
   const playerStackArr = hand.match(playerStack)
   console.log(playerStackArr)
+  console.log('asd')
 
   for (const i of playerActionArr) {
     const player = i.split(':')[0]
