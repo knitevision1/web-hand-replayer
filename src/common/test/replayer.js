@@ -3,7 +3,7 @@ import { hand } from './hand'
 export function replay () {
   const store = {}
   const playerAction = /^[\S]*:.*/mg
-  const playerStack = /[\S]*\s\(\$\d.*/mg
+  const playerStack = /[\S]*\s\(\$\d.*(?=\sin)/mg
   const playerActionArr = hand.match(playerAction)
   const playerStackArr = hand.match(playerStack)
   console.log(playerStackArr)
