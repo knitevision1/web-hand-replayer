@@ -32,5 +32,6 @@ export function replay (hand) {
   //   }
   // }
   console.log(playerStackArr)
+  console.log('asd')
   console.log(store)
 }
