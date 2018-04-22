@@ -29,7 +29,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: 'babel-loader'
+        use: ['babel-loader', 'source-map-loader']
       },
       {
         test: /\.css$/,
@@ -67,5 +67,6 @@ module.exports = {
       }
     ]
   },
-  plugins: [htmlPlugin, extractTextPlugin]
+  plugins: [htmlPlugin, extractTextPlugin],
+  devtool: 'cheap-module-eval-source-map'
 }
