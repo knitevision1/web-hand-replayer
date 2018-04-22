@@ -23,15 +23,14 @@ export function replay (hand) {
     }
   }
 
-  // for (const i of playerStackArr) {
-  //   const player = i.split('(')[0].replace(' ', '')
-  //   const stack = i.split('(')[1]
-  //   store[player] = {
-  //     ...store[player],
-  //     stack
-  //   }
-  // }
-  console.log(playerStackArr)
-  console.log('asd')
+  for (const i of playerStackArr) {
+    const player = i.split('($')[0].replace(' ', '')
+    const stack = i.split('($')[1]
+    store[player] = {
+      ...store[player],
+      stack
+    }
+  }
+
   console.log(store)
 }
