@@ -2,25 +2,18 @@
 export function replay (hand) {
   const store = {}
 
-  const preflopActions = /(?:[^:\s]+:.*\s+)+(?=.*?FLOP)/mg
-  const flopActions = /(?:[^:\s]+:.*\s+)+(?=.*?TURN)/mg
-  const turnActions = /(?:[^:\s]+:.*\s+)+(?=.*?RIVER)/mg
-  const riverActions = /(?:[^:\s]+:.*\s+)+(?=.*?SHOW)/mg
+  const preflopActions = hand.match(/(?:[^:\s]+:.*\s+)+(?=.*?FLOP)/mg)[0].split('\n')
+  const flopActions = hand.match(/(?:[^:\s]+:.*\s+)+(?=.*?TURN)/mg)[0].split('\n')
+  const turnActions = hand.match(/(?:[^:\s]+:.*\s+)+(?=.*?RIVER)/mg)[0].split('\n')
+  const riverActions = hand.match(/(?:[^:\s]+:.*\s+)+(?=.*?SHOW)/mg)[0].split('\n')
+  const playerStack = hand.match(/[\S]*\s\(\$\d.*(?=\sin)/mg)
 
-  const playerStack = /[\S]*\s\(\$\d.*(?=\sin)/mg
+  preflopActions.pop()
+  flopActions.pop()
+  turnActions.pop()
+  riverActions.pop()
 
-  const preflopActionsArr = hand.match(preflopActions)[0].split('\n')
-  const flopActionsArr = hand.match(flopActions)[0].split('\n')
-  const turnActionsArr = hand.match(turnActions)[0].split('\n')
-  const riverActionsArr = hand.match(riverActions)[0].split('\n')
-  preflopActionsArr.pop()
-  flopActionsArr.pop()
-  turnActionsArr.pop()
-  riverActionsArr.pop()
-
-  const playerStackArr = hand.match(playerStack)
-
-  for (const i of preflopActionsArr) {
+  for (const i of preflopActions) {
     const player = i.split(':')[0]
     const action = i.split(':')[1].slice(1)
     if (!store[player]) {
@@ -46,17 +39,9 @@ export function replay (hand) {
     }
   }
 
-  for (const i of flopActionsArr) {
+  for (const i of flopActions) {
     const player = i.split(':')[0]
     const action = i.split(':')[1].slice(1)
-    if (!store[player]) {
-      store[player] = {
-        ...store[player],
-        actions: {
-          flop: []
-        }
-      }
-    }
     store[player] = {
       ...store[player],
       actions: {
@@ -68,17 +53,10 @@ export function replay (hand) {
       }
     }
   }
-  for (const i of turnActionsArr) {
+
+  for (const i of turnActions) {
     const player = i.split(':')[0]
     const action = i.split(':')[1].slice(1)
-    if (!store[player]) {
-      store[player] = {
-        ...store[player],
-        actions: {
-          turn: []
-        }
-      }
-    }
     store[player] = {
       ...store[player],
       actions: {
@@ -91,17 +69,9 @@ export function replay (hand) {
     }
   }
 
-  for (const i of riverActionsArr) {
+  for (const i of riverActions) {
     const player = i.split(':')[0]
     const action = i.split(':')[1].slice(1)
-    if (!store[player]) {
-      store[player] = {
-        ...store[player],
-        actions: {
-          river: []
-        }
-      }
-    }
     store[player] = {
       ...store[player],
       actions: {
@@ -114,7 +84,7 @@ export function replay (hand) {
     }
   }
 
-  for (const i of playerStackArr) {
+  for (const i of playerStack) {
     const player = i.split('($')[0].replace(' ', '')
     const stack = i.split('($')[1]
     store[player] = {

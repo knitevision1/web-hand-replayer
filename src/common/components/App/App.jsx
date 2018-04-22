@@ -1,8 +1,9 @@
 import React from 'react'
 import { Header, Main, Foo, Bar } from 'src/common'
+import styles from './App.scss'
 
 const App = () => (
-  <div>
+  <div className={styles.h2}>
     <Header></Header>
     <Main>
       <Foo>
