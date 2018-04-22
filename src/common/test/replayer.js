@@ -33,4 +33,5 @@ export function replay (hand) {
   }
 
   console.log(store)
+  console.log('asd')
 }
